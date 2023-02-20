@@ -69,11 +69,11 @@ def login(payload: schemas.LoginUserSchema, response: Response, db: Session = De
 
     # Store refresh and access tokens in cookie
     response.set_cookie('access_token', access_token, ACCESS_TOKEN_EXPIRES_IN * 60,
-                        ACCESS_TOKEN_EXPIRES_IN * 60, '/', None, False, True, 'NONE')
+                        ACCESS_TOKEN_EXPIRES_IN * 60, '/', None, False, True, 'None', )
     response.set_cookie('refresh_token', refresh_token,
-                        REFRESH_TOKEN_EXPIRES_IN * 60, REFRESH_TOKEN_EXPIRES_IN * 60, '/', None, False, True, 'NONE')
+                        REFRESH_TOKEN_EXPIRES_IN * 60, REFRESH_TOKEN_EXPIRES_IN * 60, '/', None, False, True, 'None')
     response.set_cookie('logged_in', 'True', ACCESS_TOKEN_EXPIRES_IN * 60,
-                        ACCESS_TOKEN_EXPIRES_IN * 60, '/', None, False, False, 'NONE')
+                        ACCESS_TOKEN_EXPIRES_IN * 60, '/', None, False, False, 'None')
 
     # Send both access
     return {'status': 'success', 'access_token': access_token}
@@ -104,9 +104,9 @@ def refresh_token(response: Response, request: Request, Authorize: AuthJWT = Dep
             status_code=status.HTTP_400_BAD_REQUEST, detail=error)
 
     response.set_cookie('access_token', access_token, ACCESS_TOKEN_EXPIRES_IN * 60,
-                        ACCESS_TOKEN_EXPIRES_IN * 60, '/', None, False, True, 'lax')
+                        ACCESS_TOKEN_EXPIRES_IN * 60, '/', None, False, True, 'None')
     response.set_cookie('logged_in', 'True', ACCESS_TOKEN_EXPIRES_IN * 60,
-                        ACCESS_TOKEN_EXPIRES_IN * 60, '/', None, False, False, 'lax')
+                        ACCESS_TOKEN_EXPIRES_IN * 60, '/', None, False, False, 'None')
     return {'access_token': access_token}
 
 
