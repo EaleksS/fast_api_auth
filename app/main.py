@@ -6,7 +6,8 @@ from app.routers import user, auth
 app = FastAPI()
 
 origins = [
-    settings.CLIENT_ORIGIN,
+    "https://magazingames.vercel.app",
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
